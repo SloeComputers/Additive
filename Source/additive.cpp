@@ -10,7 +10,7 @@
 
 #define  PROGRAM         "Additive"
 #define  DESCRIPTION     "Demonstrate additive synthesis"
-#define  LINK            "https://github.com/AnotherJohnH/Additive"
+#define  LINK            "https://github.com/SloeComputers/Additive"
 #define  COPYRIGHT_YEAR  "2016"
 #define  AUTHOR          "John D. Haughton"
 
