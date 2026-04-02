@@ -3,22 +3,22 @@
 // SPDX-License-Identifier: MIT
 //-------------------------------------------------------------------------------
 
-#ifndef ADDITIVE_GUI_H
-#define ADDITIVE_GUI_H
+#pragma once
 
 #include <functional>
 
-#include "SND/SND.h"
+#include "SIG/SIG.h"
 #include "GUI/GUI.h"
 #include "PLT/Midi.h"
 
 #include "Scope.h"
-
+#include "Monitor.h"
 
 template <unsigned HARMONICS>
 class AdditiveGUI
    : public GUI::App
    , public PLT::MIDI::In
+   , public Monitor::Input
 {
 
 public:
@@ -53,10 +53,14 @@ public:
 
       // setSliders([](unsigned n) -> double { return 0.0; });
 
-      monitor.in = osc;
+      osc.setFreq(440.0);
+
+      monitor.setInput(this);
    }
 
 private:
+   SIG::Signal monitorIn() override { return osc(); }
+
    //! Update all the sliders
    void setSliders(std::function<double(unsigned)> func)
    {
@@ -96,6 +100,7 @@ private:
             std::string value_str = std::to_string(value);
             size_t i = code_ - 1;
             coef_table[i].field.setValue(value_str.c_str());
+            osc.computeWave();
          }
          break;
       }
@@ -149,8 +154,6 @@ private:
    CoefControl coef_table[HARMONICS];
 
    // Audio components
-   SND::AdditiveOsc<HARMONICS>  osc{440.0};
-   SND::Monitor                 monitor{};
+   SIG::Osc::Additive<HARMONICS> osc{};
+   Monitor                       monitor{};
 };
-
-#endif

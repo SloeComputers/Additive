@@ -3,8 +3,7 @@
 // SPDX-License-Identifier: MIT
 //-------------------------------------------------------------------------------
 
-#ifndef SCOPE_H
-#define SCOPE_H
+#pragma once
 
 #include "GUI/GUI.h"
 
@@ -12,13 +11,22 @@ class Scope
    : public GUI::Widget
    , public GUI::ColourPair
 {
+public:
+   Scope(GUI::Widget* parent)
+      : GUI::Widget(parent)
+   {
+   }
+
+   void setTable(const SIG::Signal* table_, size_t size_)
+   {
+      table      = table_;
+      table_size = size_;
+   }
+
 private:
    static const STB::Colour grid_col    = STB::RGB(0x30, 0x30, 0x30);
    static const STB::Colour grid_col_br = STB::RGB(0x80, 0x80, 0x80);
    static const STB::Colour trace_col   = STB::RGB(0x40, 0xFF, 0x40);
-
-   const double* table{};
-   size_t        table_size = 0;
 
    virtual void eventDraw(GUI::Canvas& canvas) override
    {
@@ -54,17 +62,6 @@ private:
       }
    }
 
-public:
-   Scope(GUI::Widget* parent)
-      : GUI::Widget(parent)
-   {
-   }
-
-   void setTable(const double* table_, size_t size_)
-   {
-      table      = table_;
-      table_size = size_;
-   }
+   const SIG::Signal* table{};
+   size_t             table_size{0};
 };
-
-#endif
