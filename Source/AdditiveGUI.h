@@ -154,6 +154,6 @@ private:
    CoefControl coef_table[HARMONICS];
 
    // Audio components
-   SIG::Osc::Additive<HARMONICS> osc{};
+   SIG::osc::Additive<HARMONICS> osc{};
    Monitor                       monitor{};
 };
