@@ -13,4 +13,4 @@ add_subdirectory(Platform)
 
 add_executable(additive Source/additive.cpp)
 
-target_link_libraries(additive SIG GUI)
+target_link_libraries(additive SIG_FP64 GUI)
