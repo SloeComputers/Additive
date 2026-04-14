@@ -8,7 +8,7 @@ GUI or MIDI control of 32 harmonics with "oscilloscope" view of the waveform and
 
 ## Dependencies
 
-+ https://github.com/AnotherJohnH/Platform  (pulled in at checkout)
++ https://github.com/AnotherJohnH/PDK (pulled in at checkout)
 + SDL2
 + cmake and UNIX make or auto detection of ninja if installed
 
