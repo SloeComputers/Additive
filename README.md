@@ -6,6 +6,10 @@ A demonstration of additive synthesis.
 
 GUI or MIDI control of 32 harmonics with "oscilloscope" view of the waveform and audio out with a 440 Hz fundamental.
 
+## Status
+
+[![Build Status](https://github.com/SloeComputers/Additive/actions/workflows/build_on_push.yml/badge.svg)](https://github.com/SloeComputers/Additive/actions/workflows/build_on_push.yml)
+
 ## Dependencies
 
 + https://github.com/AnotherJohnH/PDK (pulled in at checkout)

@@ -9,8 +9,10 @@ project(Additive
         LANGUAGES CXX
         VERSION 0.2)
 
+if(NOT DEFINED BUILD_TESTING)
+    set(BUILD_TESTING OFF CACHE BOOL "Build unit tests")
+endif()
+include(CTest)
+
 add_subdirectory(PDK)
-
-add_executable(additive Source/additive.cpp)
-
-target_link_libraries(additive SIG_FL64 GUI)
+add_subdirectory(Source)
